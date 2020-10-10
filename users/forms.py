@@ -51,12 +51,27 @@ class LoginForm(forms.ModelForm):
 
 
 class CreatePost(forms.ModelForm):
-    DOMAIN_CHOICES = ['Hardware', 'Software']
-    TYPE_CHOICES = ['paid', 'not-paid']
+
 
     class Meta:
         model = Post
 
+        DOMAIN_CHOICES = ['Hardware', 'Software']
+        TYPE_CHOICES = ['paid', 'not-paid']
+
         fields = ['title', 'domain', 'type', 'description']
+        title = forms.CharField(required=True)
+
+        domain = forms.ChoiceField(required=True, choices = DOMAIN_CHOICES)
+        type = forms.ChoiceField(required=True, choices=TYPE_CHOICES)
+        description = forms.CharField(widget = forms.Textarea)
+
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Title',
+                'id': 'idTitle'
+            })}
+
 
 

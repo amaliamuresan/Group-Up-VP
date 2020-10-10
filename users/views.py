@@ -79,8 +79,20 @@ def create_post(request):
     if request.method == 'POST':
         form = CreatePost(request.POST)
         if form.is_valid():
-            form.save()
+            user = MyUser.objects.get(id=request.session.get("usr_id"))
+            # acc  = User(username=form.cleaned_data.get('username'),
+            #          email=form.cleaned_data.get('email'),
+            #         password=form.cleaned_data.get('password'))
+            # acc.save()
+            pst = Post(title = form.cleaned_data.get('title'), description = form.cleaned_data.get('description'), type = form.cleaned_data.get('type'), author = user, domain = form.cleaned_data.get('domain'))
+            pst.save()
             return redirect('main-home')
     else:
         form = CreatePost()
     return render(request, 'users/post_create.html', {'form': form })
+
+def delete_post(request, pk):
+
+    post = Post.objects.get(id = pk)
+    post.delete()
+    return redirect('main-home')

@@ -1,3 +1,9 @@
+html *
+{
+    font-family: Bahnschrift !important;
+}
+
+
 body {
   background:url('../resources/wallpaper_o.png');
   margin-top: 5rem;
@@ -141,6 +147,8 @@ vertical-align: middle;
 padding:4px
 
 }
+
+
 
 
 

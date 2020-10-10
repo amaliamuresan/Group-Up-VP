@@ -30,7 +30,7 @@
         {% if is_logged == True and post.author.username == var_usr.username%}
 
             <div class = "text-center">
-                <button class = "btn btn-danger"  > Delete </button>
+                <button class = "btn btn-danger"  ><a href = "{% url 'delete-post' post.id %}" style = "color:white"> Delete </a></button>
                 <button class = "btn btn-success"  > Update </button>
             </div>
 
