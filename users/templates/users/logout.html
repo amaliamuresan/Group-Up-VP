@@ -1,0 +1,16 @@
+{% extends "mains/base.html" %}
+{% block bodyattr %}
+style = "vertical-align:middle;padding: 10px "
+class = "text-center"
+{% endblock %}
+{% block content %}
+
+<div class="container pt-3 pb-3 shadow bg-white rounded" style="width:500px">
+    <h2> Logged out! </h2>
+			<div class="border_top pt-3">
+				<small class = text-muted">
+				<a href="{% url 'login' %}"> Log in again </a>
+                </small>
+			</div>
+</div>
+{% endblock content %}
