@@ -1,0 +1,33 @@
+{% extends "mains/base.html" %}
+
+
+
+{% block bodyattr %}
+class = "d-flex justify-content-center"
+
+{% endblock %}
+
+{% block content %}
+
+<article class="media content-section shadow bg-white rounded w-50 " style = "max-width:450px;max-height:530px;" xmlns:color="http://www.w3.org/1999/xhtml">
+		<div class="form-signin " >
+			<form method = "POST">
+				{% csrf_token %}
+				<fieldset class = "form-group">
+					<legend class="border-botton text-center"> Update post </legend>
+                    <label class="sr-only">Title</label>
+                    {{ form.title }}
+
+                      <div class = "mt-2 mr-2 mb-3" style = "min-width:300px;"> Domain {{ form.domain }}  <span class = "ml-3"  > Type {{ form.type }}</span></div>
+
+                    <div>{{ form.description}}</div>
+                </fieldset>
+				<div class="form-group text-center" >
+					<button class = "btn btn-primary text-center " style="background-color:#335791" type="submit"> Update </button>
+				</div>
+			</form>
+
+		</div>
+</article>
+
+{% endblock content %}

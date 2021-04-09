@@ -1,0 +1,37 @@
+{% extends "mains/base.html" %}
+
+
+{% block content %}
+
+
+
+	 {% if messages %}
+		{% for message in messages %}
+		<div style="width:100%;text-align:center" class = "d-flex justify-content-center">
+			<div class="alert alert-info" >
+				<strong>Info!</strong> {{message}}
+			</div>
+		</div>
+		{% endfor %}
+
+	{% endif %}
+<div style="width:100%" class = "text-center">
+	<a  style="color:#FFFFFF;" href="{% url 'manage-types-domains' %}"> <button class = "btn btn-primary mb-3 " style="background-color:#335791;" > Manage domains & types </button></a>
+</div>
+
+	{% for user in users %}
+		{% if user.username != var_usr.username %}
+			<article class="media content-section shadow container p-3 mb-3 bg-white rounded d-flex align-items-center" style="width:650px">
+				<img class ="rounded-circle article-img" src = "{{ user.img.url }}">
+
+			<div class ="media-body">
+
+				<div>
+					<a href = "{% url 'profile' user.id %}" style="color:#202020">{{ user.username }}</a>
+				</div>
+			</div>
+		   </article>
+		{% endif %}
+	{% endfor %}
+
+{% endblock content %}

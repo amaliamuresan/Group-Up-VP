@@ -1,0 +1,26 @@
+{% extends "mains/base.html" %}
+
+
+
+{% block bodyattr %}
+class = "d-flex justify-content-center"
+
+{% endblock %}
+
+{% block content %}
+
+<article class="media content-section shadow bg-white rounded w-50 " style = "max-width:450px;max-height:530px;" xmlns:color="http://www.w3.org/1999/xhtml">
+		<div class="form-signin " >
+			<form method = "POST">
+				{% csrf_token %}
+				<legend class="border-botton text-center"> Create type </legend>
+                    <input name = "title"  class = "form-control" placeholder="Title" id = "title" required>
+				<div class="form-group text-center" >
+					<button class = "btn btn-primary text-center mt-2" style="background-color:#335791" type="submit"> Create </button>
+				</div>
+			</form>
+
+		</div>
+</article>
+
+{% endblock content %}

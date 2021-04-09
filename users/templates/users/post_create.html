@@ -13,11 +13,24 @@ class = "d-flex justify-content-center"
 				{% csrf_token %}
 				<fieldset class = "form-group">
 					<legend class="border-botton text-center"> Create a post </legend>
-                    <label class="sr-only">Title</label>
-                      {{ form.title }}
-                      <div class = "mt-2 mr-2 mb-3" style = "min-width:300px;"> Domain {{ form.domain }}  <span class = "ml-3"  > Type {{ form.type }}</span></div>
+					<input name = "title"  class = "form-control" placeholder="Title" required>
 
-                    <div>{{ form.description }}</div>
+
+					<select class="form-control mt-2"  name="domain">
+                        {% for domain in domains%}
+                            <option>{{domain.choices}}</option>
+                        {% endfor %}
+
+                    </select>
+
+					<select class="form-control mt-2"  name="type">
+                        {% for type in types %}
+                            <option>{{type.choices}}</option>
+                        {% endfor %}
+
+                    </select>
+					<textarea class="form-control mt-2" name="description" rows="3"  required> </textarea>
+
                 </fieldset>
 				<div class="form-group text-center" >
 					<button class = "btn btn-primary text-center " style="background-color:#335791" type="submit"> Post </button>

@@ -10,6 +10,7 @@
   <head>
 
 
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,10 +42,12 @@
 										<a class="nav-item nav-link " href="#">About</a>
 								</div>
 								<div class="navbar-nav ml-auto">
-									{% if is_logged == True %}
-										<a class="nav-item nav-link " href="{% url 'profile' var_usr.username %}">Profile</a>
+									{% if is_logged == True  %}
+										<a class="nav-item nav-link " href="{% url 'profile' var_usr.id %}">Profile</a>
 										<a class="nav-item nav-link " href="{% url 'logout' %}">Logout</a>
-
+										{% if  var_usr.user_type == 'admin' %}
+											<a class="nav-item nav-link " href="{% url 'my-admin' %}">Admin</a>
+										{% endif %}
 									{% else %}
 										<a class="nav-item nav-link " href="{% url 'register' %}">Register</a>
 										<a class="nav-item nav-link " href="{% url 'login' %}">Login</a>

@@ -15,25 +15,26 @@
 
                 </div>
                     <div>
-                        <small class="text-muted mr-2 ">Author: </small>
-                        {{ post.author }}
+                        <small class="text-muted mr-2 ">Author' s email: </small>
+                        {{ post.author.email }}
                     </div>
                 <hr style="width:50%;text-align:left;margin-left:0;width:100%">
                 <h2><a class="article-title mr-2 " href="">{{ post.title }}</a><span class="badge badge-pill badge-primary custom-badge">{{post.type}}</span> <span class="badge badge-pill badge-info custom-badge">{{post.domain}}</span></h2>
+                <div style = "width:100%">
+                    <hr>
 
-                <div>
                     {{ post.description }}
                 </div>
           </div>
 	   </article>
 
-        {% if is_logged == True and post.author.username == var_usr.username%}
-
-            <div class = "text-center">
-                <button class = "btn btn-danger"  ><a href = "{% url 'delete-post' post.id %}" style = "color:white"> Delete </a></button>
-                <button class = "btn btn-success"  > Update </button>
-            </div>
-
+        {% if is_logged == True %}
+            {% if post.author.username == var_usr.username or var_usr.user_type == 'admin' %}
+                <div class = "text-center">
+                    <a href = "{% url 'delete-post' post.id %}" style = "color:white"><button class = "btn btn-danger"  > Delete </button></a>
+                    <a href = "{% url 'update-post' post.id %}" style = "color:white"><button class = "btn btn-success"  > Update </button></a>
+                </div>
+            {% endif %}
         {% endif %}
 
 

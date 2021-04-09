@@ -3,12 +3,18 @@
 {% block bodyattr %}
 class = "d-flex justify-content-center body-register"
 
+
+
 {% endblock %}
 
 {% block content %}
 
+
+
 <article class="media content-section shadow bg-white rounded w-50 p-5 " style = "opacity: 0.9; max-width:430px" xmlns:color="http://www.w3.org/1999/xhtml">
-		<div class="form-signin " >
+
+
+	<div class="form-signin " >
 			<form method = "POST" action="{% url 'login' %}">
 				{% csrf_token %}
 				<fieldset class = "form-group">

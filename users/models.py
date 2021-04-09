@@ -10,9 +10,11 @@ class MyUser(models.Model):
     password = models.CharField(max_length=25)
     email = models.EmailField()
     img = models.ImageField(default='profile.png')
+    user_type = models.CharField(max_length=15, choices=[("user", "user"), ("admin", "admin")], default="")
 
     def __str__(self):
         return f'{self.username} '
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+

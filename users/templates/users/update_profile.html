@@ -1,0 +1,34 @@
+{% extends "mains/base.html" %}
+
+
+
+{% block bodyattr %}
+class = "d-flex justify-content-center"
+
+{% endblock %}
+
+{% block content %}
+
+<article class="media content-section shadow bg-white rounded w-50 " style = "max-width:450px;max-height:530px;" xmlns:color="http://www.w3.org/1999/xhtml">
+		<div class="form-signin " >
+			<form method = "POST" action = "{% url 'update-profile' var_usr.id %}" enctype="multipart/form-data">
+				{% csrf_token %}
+				<fieldset class = "form-group">
+					<legend class="border-botton text-center"> Update profile </legend>
+                    <input name = "username" type = "text" class = "form-control" placeholder="Username" value = "{{var_usr.username}}" required>
+                    <input name = "email" type = "email" class = "form-control mt-1" placeholder="Email" value = "{{var_usr.email}}" required>
+					<input name = "image"  type = "file" class = "form-control mt-1" placeholder="Image" src = "{{var_usr.img.url}}" value = "{{var_usr.img.url}}" >
+					<input name = "password" type = "password" class = "form-control mt-1" placeholder="Password" value = "{{var_usr.password}}" required>
+
+
+
+                </fieldset>
+				<div class="form-group text-center" >
+					<button class = "btn btn-primary text-center " style="background-color:#335791" type="submit"> Update </button>
+				</div>
+			</form>
+
+		</div>
+</article>
+
+{% endblock content %}
